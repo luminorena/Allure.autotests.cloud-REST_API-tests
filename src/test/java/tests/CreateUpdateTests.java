@@ -1,7 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import helpers.CustomApiListener;
 import helpers.GenerateFakeSteps;
@@ -18,7 +16,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.qameta.allure.Allure.step;
@@ -35,6 +32,9 @@ public class CreateUpdateTests extends TestBase {
     static Faker faker = new Faker();
     public static String testCaseName = faker.name().fullName();
     String testCaseDescription = faker.lordOfTheRings().location();
+    static String login = "allure8";
+    static String password = "allure8";
+
 
     StepList stepList = new StepList();
     Step step = new Step();
@@ -52,8 +52,6 @@ public class CreateUpdateTests extends TestBase {
         sleep(7000);
     }
 
-    static String login = "allure8";
-    static String password = "allure8";
 
     @Test
     void loginWithCookieTest() {
@@ -87,13 +85,8 @@ public class CreateUpdateTests extends TestBase {
     }
 
     @Test
-    void apiAuth() {
-
-    }
-
-    @Test
     void createTestCase() {
-        //  step("Авторизация", this::authorize);
+       // step("Авторизация", this::authorize);
         step("Создать тест кейс", () -> {
             CreateTestCaseModel testCaseBody = new CreateTestCaseModel();
             testCaseBody.setName(testCaseName);
